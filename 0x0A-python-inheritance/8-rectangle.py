@@ -5,7 +5,7 @@ Author: Kanneh
 
 
 class BaseGeometry:
-    """An empty class"""
+    """A Base Geometry class"""
 
     def area(self):
         """Raises an exception because...
@@ -19,8 +19,17 @@ class BaseGeometry:
             name(str) - input name as string
             value(int): pararams validator
         """
-        if type(value) != int:
+        if type(value) not in [int]:
             raise TypeError("{} must be an integer".format(name))
         if value <= 0:
             raise ValueError("{} must be greater than 0".format(name))
-        return value
+
+
+class Rectangle(BaseGeometry):
+    """A class Rectangle that inherits from BaseGeometry"""
+
+    def __init__(self, width, height):
+        """Instantiation of width and height"""
+        self.integer_validator(width, height)
+        self.__width = width
+        self.__height = height
